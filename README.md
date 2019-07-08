@@ -29,23 +29,21 @@ $('.frzTable.rel').frzTable({
 ```
 ## note
    
-web版
-手機板 min-width 以手機板大小為主
-不要再js裡寫計算css
-prop決定出現幾個格子
-點箭頭移動幾個儲存格
-RWD轉換HTML要用同一個
-移動端 調整過日期 拉回pc版要保存上次的狀態
+
+1. 手機板 min-width 以手機板大小為主
+2. 不要再js裡寫計算css
+3. prop決定出現幾個格子
+4. 點箭頭移動幾個儲存格
+5. RWD轉換HTML要用同一個
+6. 移動端 調整過日期 拉回pc版要保存上次的狀態
 456 > 123456 > 456
-css點擊後會劃十字
-表個 各定 7 天 
-移動時要用class
-callback( ) => console.log()可以自己打東西
+7. css點擊後會劃十字
+8. 表個 各定 7 天 
+9. 移動時要用class
+10. callback( ) => console.log()可以自己打東西
 
 
 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
