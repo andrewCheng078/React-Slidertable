@@ -5,9 +5,14 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-      app page
-      <Table/>
-    </div>
+
+          <Table  slide={ 1 } 
+                  show={ 4 } 
+                  speed={ .3 } 
+                  whenClick={ ()=>console.log('dosomething') }
+          />
+
+      </div>
     )
   }
 }
