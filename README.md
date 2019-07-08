@@ -1,3 +1,50 @@
+
+## 需求
+```js
+
+$('.frzTable.default').frzTable({
+    count: {
+        // M版時每次點擊往前往後移動幾格儲存格
+        slide: 1, // [number] 
+        // M版時一個畫面show幾格儲存格
+        show: 4 // [number] 
+    },
+    // 設定花多久時間移動完成
+    speed: .3, // [number] 
+    // 每次點擊儲存格時會執行此callback，並帶入所點擊的儲存格jquery物件
+    whenClick: function($element) {
+        // console.log($element)
+    }
+})
+$('.frzTable.rel').frzTable({
+    count: {
+        slide: 1,
+        show: 2
+    },
+    whenClick: function($element) {
+        // console.log($element)
+    }
+})
+
+```
+## note
+   
+web版
+手機板 min-width 以手機板大小為主
+不要再js裡寫計算css
+prop決定出現幾個格子
+點箭頭移動幾個儲存格
+RWD轉換HTML要用同一個
+移動端 調整過日期 拉回pc版要保存上次的狀態
+456 > 123456 > 456
+css點擊後會劃十字
+表個 各定 7 天 
+移動時要用class
+callback( ) => console.log()可以自己打東西
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -37,32 +84,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
