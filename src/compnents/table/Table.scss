@@ -1,29 +1,28 @@
 $base-color: #eaedf2;
 $base-border-color: #e1e2e4;
-
+$active-border-color:#ff8e26;
 
 
 .table{
     display: flex;
     list-style: none;
     border-collapse: collapse;
-    // border:.5px solid $base-border-color;
-
 }
 .m-Button{
     padding: 13px 3px;
     line-height: 1;
     background: hsla(0,0%,67%,.5);
     position: absolute;
-    top: 32%;
+    top: 40%;
     z-index: 1;
     color: #fff;
     display: block;
- 
 }
+
 .m-rightButton{
     right: 0;
 }
+
 .m-leftButton{
     left: 0;
 }
@@ -39,6 +38,7 @@ $base-border-color: #e1e2e4;
                     transition: all 0.3s ease-in-out 0s;
                     div{
                         display: flex;
+                        position: relative;
                         justify-content: center;
                         align-items: center;
                         // min-width: 33.333%;
@@ -60,11 +60,18 @@ $base-border-color: #e1e2e4;
         align-items: center;
     }  
 }
+
+.block {
+    display: block !important;
+}
+
 .dateTitle span{
     display: block;
-    // :first-child(1){
-    //     text-align: right;
-    // }
+    padding: 3px;
+}
+
+.dateTitle :first-child{
+   text-align: right;
 }
 
 .m-table{
@@ -82,7 +89,6 @@ $base-border-color: #e1e2e4;
     border-top: 1px solid $base-border-color;
     border-left: 1px solid $base-border-color;
     border-right: 1px solid $base-border-color;
-    
 }
 
 @for $i from 1 through 4 {
@@ -91,31 +97,73 @@ $base-border-color: #e1e2e4;
     }
 }
 
-// @for $i from 1 through 4 {
-//     .moveLeft-#{$i}{
-//         transform: translateX(33.333%*#{$i});
-//     }
-//     .moveRight-#{$i}{
-//         transform: translateX(-33.333%*#{$i});
-//     }
-// }
-.moveRight-3{
-    transform: translateX(-33.333% *3);
+@for $i from 1 through 4 {
+    .moveLeft-#{$i}{
+        transform: translateX(33.333%*#{$i});
+    }
+    .moveRight-#{$i}{
+        transform: translateX(-33.333%*#{$i});
+    }
 }
 
 
 
+.moveRight-3{
+    transform: translateX(-33.333% *3);
+}
 
+.cheapest:before {
+    content: "\6700\4FBF\5B9C";
+    position: absolute;
+    top: 0;
+    left: 20px;
+    color: $active-border-color;
+    font-size: 12px;
+}
+
+ .cheapest:after {
+    content: "";
+    height: 0;
+    width: 0;
+    position: absolute;
+    top: -1px;
+    left: 0;
+    border-top: 10px solid $active-border-color;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid $active-border-color;
+}
+
+.active {
+    background: #fff9e3;
+    border-right: 1px solid #fe8b88;
+    border-bottom: 1px solid #fe8b88;
+}
+
+tr:not(:first-child) .interchange {
+    background: #f7f7f7;
+}
 
 .nowrap{
     white-space:nowrap; 
     display: flex;
 }
 
-// .hidden{
-//   width:100%;
-// }
+.buttonHide{
+    display: none;
+}
 
+//hover test
+// .row-box tr td div  :not(:first-child):hover::before { 
+//     background-color: #eee;
+//     content: '';  
+//     height: 100%;
+//     left: -5000px;
+//     position: absolute;  
+//     top: 0;
+//     width: 10000px;   
+//     z-index: -2;        
+// }
 
 @media (min-width: 767px) {
     @for $i from 1 through 4 {
@@ -130,8 +178,7 @@ $base-border-color: #e1e2e4;
     .m-Button{
       display: none;
      
-    }
-    
-    
-    
+    } 
 }
+
+@media (max-width: 375px) {.m-Button{top: 43%;} }

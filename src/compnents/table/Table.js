@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Table.scss';
 import json from '../../ticketInfo';
-console.log('data',json.data[0].data);
+console.log('json',json);
 export default class Table extends Component {
     constructor(){
         super();
@@ -10,20 +10,23 @@ export default class Table extends Component {
             moveRight:'1',
             slide:'3',
             tableData:[],
-            dateArray:['12/30(六)','12/31(日)','1/1(一)','1/2(二)','1/3(三)','1/4(四)','1/5(五)']
+            n:0,
+            R_ButtonHide:true,
+            L_ButtonHide:false,
         }
         
     }
 
     tableRight(){
-        this.setState({
-            moveRight:'3'
-        })
-        console.log(this.state.moveRight)
+        this.setState({n:'-100%', L_ButtonHide:true,})
+        if(this.state.n === '-100%'){this.setState({n:'-133%', R_ButtonHide:false,})}
+        if(this.state.n === '-133%'){this.setState({n:'-133%'})}
     }
 
     tableLeft(){
-        console.log('left')
+        if(this.state.n === '-133%'){this.setState({n:'-100%'})}
+        if(this.state.n === '-100%'){this.setState({n:'0%', L_ButtonHide:false,R_ButtonHide:true})}
+       
     }
 
     componentDidMount(){
@@ -32,15 +35,15 @@ export default class Table extends Component {
 
     }
     render() {
-        const { show,dateArray,moveRight,n,tableData } = this.state;
+        const { show,moveRight,n,tableData,R_ButtonHide,L_ButtonHide } = this.state;
         return (
         <div className="table">
-            <button onClick={this.tableRight.bind(this)} className="m-Button m-rightButton">{'>'}</button>
-            <button onClick={this.tableLeft.bind(this)} className="m-Button m-leftButton">{'<'}</button>
+            <button className={`m-Button m-rightButton ${R_ButtonHide?` `:`buttonHide`}`} onClick={this.tableRight.bind(this)}>{'>'}</button>
+            <button className={`m-Button m-leftButton ${L_ButtonHide?` `:`buttonHide`}`} onClick={this.tableLeft.bind(this)}>{'<'}</button>
                 <table className="row-box m-table">
                     <tbody>
                             <tr>
-                                <td className="navDate-title-bg">
+                                <td className="navDate-title-bg block">
                                     <div className="dateTitle">
                                         <span>回程</span>
                                         <span>去程</span>
@@ -60,21 +63,20 @@ export default class Table extends Component {
                             </tr>
 
                         {tableData.map((data,index)=>{
-                            return    <tr key={`${data.goDate}+${index}`}>
+                            return    <tr key={`${ data.goDate }+${ index }`}>
                                         <td className="navDate-title-bg">
                                             <div>
-                                                <span>{data.goDate}</span>
+                                                <span>{ data.goDate }</span>
                                             </div>
                                         </td>
-                                        
                                         <td className="hidden">
                                             <div className={ `nowrap moveRight-${ moveRight }` } style={{transform: `translateX(${n})`}}>
                                                 {data.detail.map((detail,index)=>{
-                                                    return  <div key={`${detail.backDate}+${detail.price}+${index}`} className={`show-${ show }`}><span>
-                                                    { detail.price === "--"?'查看':(detail.price === " "?"--":detail.price)
-                                                       
-                                                                                    }
-                                                    </span></div>
+                                                    return  <div key={`${detail.backDate}+${detail.price}+${index}`} className={`show-${ show } ${detail.cheapest?'cheapest':null}`  }>
+                                                                <span>
+                                                                    { detail.price === "--"?'查看':(detail.price === " "?"--":detail.price +' 起') }
+                                                                </span>
+                                                            </div>
                                                 })}
                                             </div> 
                                         </td>                              
