@@ -13,10 +13,9 @@ export default class Table extends Component {
             R_ButtonHide: true,
             L_ButtonHide: false,
             moveClass: 'move-1-0',
-            activeClass: false,
             id: 10,
-            row: '',
-            col: '',
+            row: 0,
+            col: 0,
             count: 0,
 
         }
@@ -180,32 +179,19 @@ export default class Table extends Component {
     }
    
     activeClass(e) {
-        //init
-        const allTableClass = `.tableItem`;
-
-        const allTableItem = document.querySelectorAll(allTableClass);
-        allTableItem.forEach((e) => {
-            e.classList.remove('active', 'cross-bg');
-        });
-        // aaa active
         const el = e.currentTarget;
-        el.classList.add('active');
-        const newTable = [...allTableItem];
-        const columnTable = newTable.filter((e) => {
-            return e.id % 7 === (el.id % 7)
+        const colId =el.id %7
+        const rowId = Math.floor(el.id/7) 
+        this.setState({
+            col:colId,
+            row:rowId,
+            id:+el.id,
         })
-
-        const rowTable = newTable.filter((e) => {
-            return Math.floor(e.id / 7) === Math.floor(el.id / 7)
-        })
-
-        columnTable.forEach((e) => {
-            e.classList.add('cross-bg');
-        })
-
-        rowTable.forEach((e) => {
-            e.classList.add('cross-bg');
-        })
+       
+//corss-bg
+      
+      
+     
 
     }
     addData(d){
@@ -218,7 +204,7 @@ export default class Table extends Component {
 
     }
     render() {
-        const { show, n, tableData, R_ButtonHide, L_ButtonHide, moveClass, activeClass } = this.state;
+        const { show, n, tableData, R_ButtonHide, L_ButtonHide , moveClass , id , col , row } = this.state;
         return (
             <div className="table">
                 <button className={`m-Button m-rightButton ${R_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableRight.bind(this)}>{'>'}</button>
@@ -256,8 +242,14 @@ export default class Table extends Component {
                                 <td className="hidden">
                                     <div className={`nowrap transform_init ${moveClass}`} >
                                         {data.detail.map((detail, index2) => {
-                                            return <div key={`${detail.backDate}+${detail.price}+${index2}`} id={(index1 * 7) + index2}
-                                                className={`tableItem show-${show} ${detail.cheapest ? 'cheapest' : ''} ${activeClass ? 'active' : ''}`}
+                                            return <div key={`${detail.backDate}+${detail.price}+${index2}`} 
+                                                id={(index1 * 7) + index2}
+                                                className={`tableItem show-${show} 
+                                                ${detail.cheapest ? 'cheapest' : ''} 
+                                                ${id=== ((index1 * 7) + index2) ? 'active' : '' }
+                                                ${col=== ((index1 * 7) + index2 )%7 ? 'cross-bg':'' }
+                                                ${row=== Math.floor(((index1 * 7) + index2 )/7) ? 'cross-bg':'' }
+                                                `}
                                                 onClick={this.activeClass.bind(this)}
                                             >
                                                 <span>
