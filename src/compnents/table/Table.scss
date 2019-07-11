@@ -41,9 +41,6 @@ $active-border-color:#ff8e26;
                         position: relative;
                         justify-content: center;
                         align-items: center;
-                        // min-width: 33.333%;
-                        // text-align: center;
-                        // min-width: calc(100% /3);
                         height: 50px;
                         line-height: 21px;
                         border-right: 1px solid $base-border-color;
@@ -97,20 +94,52 @@ $active-border-color:#ff8e26;
     }
 }
 
+// @for $i from 1 through 4 {
+//     .move-3-#{$i}{
+//          transform: translateX(33.333%*#{$i});
+//     }
+//     .moveLeft-3-#{$i}{
+//         transform: translateX(33.333%*#{$i});
+//     }
+//     .moveRight-3-#{$i}{
+//         transform: translateX(-33.333%*#{$i});
+//     }
+// }
+
+// show 1 
+@for $i from 1 through 6 {
+    .move-1-#{$i}{
+         transform: translateX( -100%*$i );
+    }
+  
+}
+
+//show 2
+@for $i from 1 through 5 {
+    .move-2-#{$i}{
+         transform: translateX( -50%*$i );
+    }
+  
+}
+
+//show 3
 @for $i from 1 through 4 {
-    .moveLeft-#{$i}{
-        transform: translateX(33.333%*#{$i});
+    .move-3-#{$i}{
+         transform: translateX( -33.3333%*$i );
     }
-    .moveRight-#{$i}{
-        transform: translateX(-33.333%*#{$i});
+  
+}
+
+//show 4
+@for $i from 1 through 3 {
+    .move-4-#{$i}{
+         transform: translateX( -25%*$i );
     }
+  
 }
 
 
 
-.moveRight-3{
-    transform: translateX(-33.333% *3);
-}
 
 .cheapest:before {
     content: "\6700\4FBF\5B9C";
@@ -136,8 +165,10 @@ $active-border-color:#ff8e26;
 
 .active {
     background: #fff9e3;
-    border-right: 1px solid #fe8b88;
-    border-bottom: 1px solid #fe8b88;
+    border: 1px solid #fe8b88 !important;
+}
+.cross-bg{
+    background: #f7f7f7;
 }
 
 tr:not(:first-child) .interchange {
@@ -155,16 +186,18 @@ tr:not(:first-child) .interchange {
 
 //hover test
 // .row-box tr td div  :not(:first-child):hover::before { 
-//     background-color: #eee;
-//     content: '';  
+//     background-color: #eee;  
 //     height: 100%;
 //     left: -5000px;
 //     position: absolute;  
 //     top: 0;
 //     width: 10000px;   
-//     z-index: -2;        
+//     z-index: -3;        
 // }
 
+.transform_init{
+    // transform: translateX(0%);
+}
 @media (min-width: 767px) {
     @for $i from 1 through 4 {
         .show-#{$i}{
@@ -172,8 +205,8 @@ tr:not(:first-child) .interchange {
            
         }
     }
-    .moveRight-3{
-        transform: translateX(0%);
+    .transform_init{
+        transform: translateX(0%) !important;
     }
     .m-Button{
       display: none;

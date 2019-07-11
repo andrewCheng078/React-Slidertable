@@ -30,19 +30,58 @@ $('.frzTable.rel').frzTable({
 ## note
    
 
-1. 手機板 min-width 以手機板大小為主
-2. 不要再js裡寫計算css
-3. prop決定出現幾個格子
-4. 點箭頭移動幾個儲存格
-5. RWD轉換HTML要用同一個
-6. 移動端 調整過日期 拉回pc版要保存上次的狀態
-456 > 123456 > 456
-7. css點擊後會劃十字
-8. 表個 各定 7 天 
+1. ~~手機板 min-width 以手機板大小為主~~
+2. ~~不要再js裡寫計算css~~
+3. ~~prop決定出現幾個格子~~
+4. ~~點箭頭移動幾個儲存格~~
+5. ~~RWD轉換HTML要用同一個~~
+6. ~~移動端 調整過日期 拉回pc版要保存上次的狀態~~
+~~456 > 123456 > 456~~
+7. css點擊後會劃十字 用餘數(目前為dom操作,待改(用資料操作))
+8. ~~表個 各定 7 天~~
 9. 移動時要用class
-10. callback( ) => console.log()可以自己打東西
+10. callback( ) => console.log()可以自己打東西 註冊在window底下
 
+```js
 
+   if(this.state.show === 1){
+                if(this.state.slide === 1){
+                    if(this.state.count === 5){this.setState({R_ButtonHide:false,})};
+                    this.setState({moveClass:`move-1-${this.state.count+=this.state.slide}`});
+                }
+
+                if(this.state.slide === 2){
+                    if(this.state.count === 4){this.setState({R_ButtonHide:false,})};
+                    this.setState({moveClass:`move-1-${this.state.count+=this.state.slide}`});
+                      
+                }
+
+                if(this.state.slide === 3){
+                    if(this.state.count >=3){this.setState({R_ButtonHide:false,})};
+                    this.setState({moveClass:`move-1-${this.state.count+=this.state.slide}`});
+                      
+                }
+
+                if(this.state.slide === 4){
+                    if(this.state.count >=4){this.setState({R_ButtonHide:false,moveClass:`move-1-${this.state.count+=2}`})}else{
+                        this.setState({moveClass:`move-1-${this.state.count+=this.state.slide}`});
+                    };  
+                }
+
+                if(this.state.slide === 5){
+                    if(this.state.count >=5){this.setState({R_ButtonHide:false,moveClass:`move-1-${this.state.count+=1}`})}else{
+                        this.setState({moveClass:`move-1-${this.state.count+=this.state.slide}`});
+                    };  
+                }
+
+                if(this.state.slide === 6){
+                        this.setState({moveClass:`move-1-${this.state.count+=this.state.slide}`,R_ButtonHide:false,});
+                }
+
+            }
+            this.setState({L_ButtonHide:true,})
+
+```
 
 
 ## Available Scripts
