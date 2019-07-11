@@ -208,6 +208,10 @@ export default class Table extends Component {
         })
 
     }
+    addData(d){
+       //something
+        console.log('get outside')
+    }
     componentDidMount() {
 
         this.setState({ tableData: json.data[0].data, });
