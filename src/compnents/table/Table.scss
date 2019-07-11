@@ -94,18 +94,49 @@ $active-border-color:#ff8e26;
     }
 }
 
-@for $i from 1 through 4 {
-    .move-3-#{$i}{
-         transform: translateX(33.333%*#{$i});
+// @for $i from 1 through 4 {
+//     .move-3-#{$i}{
+//          transform: translateX(33.333%*#{$i});
+//     }
+//     .moveLeft-3-#{$i}{
+//         transform: translateX(33.333%*#{$i});
+//     }
+//     .moveRight-3-#{$i}{
+//         transform: translateX(-33.333%*#{$i});
+//     }
+// }
+
+// show 1 
+@for $i from 1 through 6 {
+    .move-1-#{$i}{
+         transform: translateX( -100%*$i );
     }
-    // .moveLeft-3-#{$i}{
-    //     transform: translateX(33.333%*#{$i});
-    // }
-    // .moveRight-3-#{$i}{
-    //     transform: translateX(-33.333%*#{$i});
-    // }
+  
 }
 
+//show 2
+@for $i from 1 through 5 {
+    .move-2-#{$i}{
+         transform: translateX( -50%*$i );
+    }
+  
+}
+
+//show 3
+@for $i from 1 through 4 {
+    .move-3-#{$i}{
+         transform: translateX( -33.3333%*$i );
+    }
+  
+}
+
+//show 4
+@for $i from 1 through 3 {
+    .move-4-#{$i}{
+         transform: translateX( -25%*$i );
+    }
+  
+}
 
 
 
@@ -136,6 +167,9 @@ $active-border-color:#ff8e26;
     background: #fff9e3;
     border: 1px solid #fe8b88 !important;
 }
+.cross-bg{
+    background: #f7f7f7;
+}
 
 tr:not(:first-child) .interchange {
     background: #f7f7f7;
@@ -161,8 +195,8 @@ tr:not(:first-child) .interchange {
 //     z-index: -3;        
 // }
 
-.moveRight-3{
-    transform: translateX(0%);
+.transform_init{
+    // transform: translateX(0%);
 }
 @media (min-width: 767px) {
     @for $i from 1 through 4 {
@@ -171,7 +205,7 @@ tr:not(:first-child) .interchange {
            
         }
     }
-    .moveRight-3{
+    .transform_init{
         transform: translateX(0%) !important;
     }
     .m-Button{
