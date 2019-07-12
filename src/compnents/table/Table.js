@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Table.scss';
 import json from '../../ticketInfo';
+import newData from '../../newData';
 
 export default class Table extends Component {
     constructor() {
@@ -8,6 +9,7 @@ export default class Table extends Component {
         this.state = {
             show: 4,
             slide: 2,
+            speed:.3,
             tableData: [],
             n: 0,
             R_ButtonHide: true,
@@ -17,7 +19,6 @@ export default class Table extends Component {
             row: 0,
             col: 0,
             count: 0,
-
         }
 
     }
@@ -196,15 +197,22 @@ export default class Table extends Component {
     }
     addData(d){
        //something
-        console.log('get outside')
+       const tableData = this.state.tableData;
+       const data = newData; 
+        tableData.push(data);
+        this.setState({
+            tableData:tableData
+        })
+        console.log('push new data!!',d);
+        
     }
     componentDidMount() {
 
-        this.setState({ tableData: json.data[0].data, });
-
+       this.setState({ tableData: json.data[0].data, });
+     
     }
     render() {
-        const { show, n, tableData, R_ButtonHide, L_ButtonHide , moveClass , id , col , row } = this.state;
+        const { show, n, tableData, R_ButtonHide, L_ButtonHide , moveClass , id , col , row, speed } = this.state;
         return (
             <div className="table">
                 <button className={`m-Button m-rightButton ${R_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableRight.bind(this)}>{'>'}</button>
@@ -219,7 +227,7 @@ export default class Table extends Component {
                                 </div>
                             </td>
                             <td className="hidden">
-                                <div className={`nowrap transform_init  ${moveClass}`}  >
+                                <div className={`nowrap transform_init  ${moveClass}`} style={{transition:`all ${speed}s ease-in-out 0s`}} >
                                     <div className={`navDate-bg show-${show}`}><span>12/30(六)</span></div>
                                     <div className={`navDate-bg show-${show}`}><span>12/31(日)</span></div>
                                     <div className={`navDate-bg show-${show}`}><span>1/1(一)</span></div>
@@ -240,7 +248,7 @@ export default class Table extends Component {
                                     </div>
                                 </td>
                                 <td className="hidden">
-                                    <div className={`nowrap transform_init ${moveClass}`} >
+                                    <div className={`nowrap transform_init ${moveClass}`} style={{transition:`all ${speed}s ease-in-out 0s`}}>
                                         {data.detail.map((detail, index2) => {
                                             return <div key={`${detail.backDate}+${detail.price}+${index2}`} 
                                                 id={(index1 * 7) + index2}
@@ -268,25 +276,3 @@ export default class Table extends Component {
         )
     }
 }
-
-
-
-{/* template
-                        <tr>
-                            <td className="navDate-title-bg">
-                                <div>
-                                    <span>12/27(三)</span>
-                                </div>
-                            </td>
-                            <td className="hidden">
-                                <div className={`nowrap moveRight-${moveRight}`} style={{transform: `translateX(${n})`}}>
-                                    <div className={`show-${show}`}><span>$15,568</span></div>
-                                    <div className={`show-${show}`}><span>$15,568</span></div>
-                                    <div className={`show-${show}`}><span>$15,568</span></div>
-                                    <div className={`show-${show}`}><span>$15,568</span></div>
-                                    <div className={`show-${show}`}><span>$15,568</span></div>
-                                    <div className={`show-${show}`}><span>$15,568</span></div>
-                                    <div className={`show-${show}`}><span>$15,568</span></div>
-                                </div> 
-                            </td>                              
-                        </tr> */}

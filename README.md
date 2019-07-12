@@ -27,6 +27,7 @@ $('.frzTable.rel').frzTable({
 })
 
 ```
+
 ## note
    
 
@@ -37,10 +38,10 @@ $('.frzTable.rel').frzTable({
 5. ~~RWD轉換HTML要用同一個~~
 6. ~~移動端 調整過日期 拉回pc版要保存上次的狀態~~
 ~~456 > 123456 > 456~~
-7. css點擊後會劃十字 用餘數(目前為dom操作,待改(用資料操作))
+7. ~~css點擊後會劃十字 用餘數(目前為dom操作,待改(用資料操作))~~
 8. ~~表個 各定 7 天~~
-9. 移動時要用class
-10. callback( ) => console.log()可以自己打東西 註冊在window底下
+9. ~~移動時要用class~~
+10. ~~callback( ) => console.log()可以自己打東西 註冊在window底下~~
 
 ```js
 

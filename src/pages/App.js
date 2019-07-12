@@ -6,8 +6,8 @@ export default class App extends Component {
     super();
     this.tableRef = React.createRef();
   }
-  addData(){
-    this.tableRef.current.addData();
+  addData(n){
+    this.tableRef.current.addData(n);
   }
   componentDidMount(){
     console.log("ref",this.tableRef);
