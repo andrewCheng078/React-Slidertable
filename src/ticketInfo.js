@@ -1,6 +1,5 @@
 
-let json = {};
-export default json ={
+export default {
     "data":[{
         "fromDate":"2018/12/27(三)",
         "toDate": "2019/01/03 ",
