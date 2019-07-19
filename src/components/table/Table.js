@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Table.scss';
 import json from '../../ticketInfo';
 import newData from '../../newData';
+import rightArrow  from './imgs/rightarrow.png';
+import leftArrow from './imgs/leftarrow.png';
 
 export default class Table extends Component {
     constructor() {
@@ -90,8 +92,12 @@ export default class Table extends Component {
         const { show, count, tableData, R_ButtonHide, L_ButtonHide, id, col, row, speed } = this.state;
         return (
             <div className="table">
-                <button className={`m-Button m-rightButton ${R_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableRight.bind(this)}>{'>'}</button>
-                <button className={`m-Button m-leftButton ${L_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableLeft.bind(this)}>{'<'}</button>
+                <a className={`m-Button m-rightButton ${R_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableRight.bind(this)}>
+                    <img src={rightArrow} alt=""/>
+                </a>
+                <a className={`m-Button m-leftButton ${L_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableLeft.bind(this)}>
+                    <img src={leftArrow} alt=""/>
+                </a>
                 <table className="row-box m-table">
                     <tbody>
                         <tr>
@@ -105,7 +111,10 @@ export default class Table extends Component {
                                 <div className={`nowrap transform_init move-${ show }-${ count } `} style={{ transition: `all ${speed}s ease-in-out 0s` }} >
                                     <div className={`navDate-bg show-${show}`}><span>12/30(六)</span></div>
                                     <div className={`navDate-bg show-${show}`}><span>12/31(日)</span></div>
-                                    <div className={`navDate-bg show-${show}`}><span>1/1(一)</span></div>
+                                    <div className={`navDate-bg show-${show}`}>
+                                        <span className="yearTitle">2018</span>
+                                        <span>1/1(一)</span>
+                                    </div>
                                     <div className={`navDate-bg show-${show}`}><span>1/2(二)</span></div>
                                     <div className={`navDate-bg show-${show}`}><span>1/3(三)</span></div>
                                     <div className={`navDate-bg show-${show}`}><span>1/4(四)</span></div>
@@ -115,12 +124,15 @@ export default class Table extends Component {
                         </tr>
 
                         {tableData.map((data, index1) => {
-
+                            console.log(data.goDate)
                             return <tr key={`${data.goDate}+${index1}`}>
                                 <td className="navDate-title-bg">
                                     <div>
+                                    {data.goDate==="01/01(一)"?<span className="nav-yearTitle">2018</span>:false}
+                                      
                                         <span>{data.goDate}</span>
                                     </div>
+                                    
                                 </td>
                                 <td className="hidden">
                                     <div className={`nowrap transform_init move-${ show }-${ count }`} style={{ transition: `all ${speed}s ease-in-out 0s` }}>
@@ -136,7 +148,7 @@ export default class Table extends Component {
                                                 onClick={this.activeClass.bind(this)}
                                             >
                                                 <span>
-                                                    {detail.price === "--" ? '查看' : (detail.price === " " ? "--" : detail.price + ' 起')}
+                                                    {detail.price === "--" ? '查看' : (detail.price === " " ? "--" : <b>{detail.price + ' 起'}</b>)}
                                                 </span>
                                             </div>
                                         })}

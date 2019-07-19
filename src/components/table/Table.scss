@@ -4,18 +4,18 @@ $active-border-color:#ff8e26;
 
 
 .table{
+    font-family: Verdana,Arial,Microsoft JhengHei,Microsoft YaHei;
     display: flex;
     list-style: none;
     border-collapse: collapse;
+    position: relative;
+    color: #666;
 }
 .m-Button{
-    padding: 13px 3px;
     line-height: 1;
-    background: hsla(0,0%,67%,.5);
     position: absolute;
-    top: 40%;
+    top: 50%;
     z-index: 1;
-    color: #fff;
     display: block;
 }
 
@@ -25,6 +25,7 @@ $active-border-color:#ff8e26;
 
 .m-leftButton{
     left: 0;
+   
 }
 
 .row-box{
@@ -67,6 +68,7 @@ $active-border-color:#ff8e26;
     padding: 3px;
 }
 
+
 .dateTitle :first-child{
    text-align: right;
 }
@@ -86,7 +88,22 @@ $active-border-color:#ff8e26;
     border-top: 1px solid $base-border-color;
     border-left: 1px solid $base-border-color;
     border-right: 1px solid $base-border-color;
+    position: relative;
 }
+
+.yearTitle{
+position: absolute;
+top: -3px;
+right: 29%;
+color: #24a07c;
+}
+.nav-yearTitle{
+    position: absolute;
+top: 0px;
+right: 20%;
+color: #24a07c;
+}
+
 
 @for $i from 1 through 4 {
     .show-#{$i}{
@@ -152,7 +169,12 @@ $active-border-color:#ff8e26;
   
 }
 
-
+// content: "2018";
+// display: block;
+// font-size: 12px;
+// color: #24a07c;
+// text-align: right;
+// line-height: 1;
 
 
 .cheapest:before {
@@ -227,5 +249,3 @@ tr:not(:first-child) .interchange {
      
     } 
 }
-
-@media (max-width: 375px) {.m-Button{top: 43%;} }
