@@ -111,7 +111,10 @@ export default class Table extends Component {
                                 <div className={`nowrap transform_init move-${ show }-${ count } `} style={{ transition: `all ${speed}s ease-in-out 0s` }} >
                                     <div className={`navDate-bg show-${show}`}><span>12/30(六)</span></div>
                                     <div className={`navDate-bg show-${show}`}><span>12/31(日)</span></div>
-                                    <div className={`navDate-bg show-${show}`}><span>1/1(一)</span></div>
+                                    <div className={`navDate-bg show-${show}`}>
+                                        <span className="yearTitle">2018</span>
+                                        <span>1/1(一)</span>
+                                    </div>
                                     <div className={`navDate-bg show-${show}`}><span>1/2(二)</span></div>
                                     <div className={`navDate-bg show-${show}`}><span>1/3(三)</span></div>
                                     <div className={`navDate-bg show-${show}`}><span>1/4(四)</span></div>
@@ -121,12 +124,15 @@ export default class Table extends Component {
                         </tr>
 
                         {tableData.map((data, index1) => {
-
+                            console.log(data.goDate)
                             return <tr key={`${data.goDate}+${index1}`}>
                                 <td className="navDate-title-bg">
                                     <div>
+                                    {data.goDate==="01/01(一)"?<span className="nav-yearTitle">2018</span>:false}
+                                      
                                         <span>{data.goDate}</span>
                                     </div>
+                                    
                                 </td>
                                 <td className="hidden">
                                     <div className={`nowrap transform_init move-${ show }-${ count }`} style={{ transition: `all ${speed}s ease-in-out 0s` }}>
