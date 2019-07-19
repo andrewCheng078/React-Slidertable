@@ -4,18 +4,18 @@ $active-border-color:#ff8e26;
 
 
 .table{
+    font-family: Verdana,Arial,Microsoft JhengHei,Microsoft YaHei;
     display: flex;
     list-style: none;
     border-collapse: collapse;
+    position: relative;
+    color: #666;
 }
 .m-Button{
-    padding: 13px 3px;
     line-height: 1;
-    background: hsla(0,0%,67%,.5);
     position: absolute;
-    top: 40%;
+    top: 50%;
     z-index: 1;
-    color: #fff;
     display: block;
 }
 
@@ -25,6 +25,7 @@ $active-border-color:#ff8e26;
 
 .m-leftButton{
     left: 0;
+   
 }
 
 .row-box{
@@ -227,5 +228,3 @@ tr:not(:first-child) .interchange {
      
     } 
 }
-
-@media (max-width: 375px) {.m-Button{top: 43%;} }

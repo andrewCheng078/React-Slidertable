@@ -14,7 +14,6 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-
           <Table  slide={ 3 } 
                   show={ 3 } 
                   speed={ .3 } 

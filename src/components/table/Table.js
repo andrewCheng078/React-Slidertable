@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Table.scss';
 import json from '../../ticketInfo';
 import newData from '../../newData';
+import rightArrow  from './imgs/rightarrow.png';
+import leftArrow from './imgs/leftarrow.png';
 
 export default class Table extends Component {
     constructor() {
@@ -90,8 +92,12 @@ export default class Table extends Component {
         const { show, count, tableData, R_ButtonHide, L_ButtonHide, id, col, row, speed } = this.state;
         return (
             <div className="table">
-                <button className={`m-Button m-rightButton ${R_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableRight.bind(this)}>{'>'}</button>
-                <button className={`m-Button m-leftButton ${L_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableLeft.bind(this)}>{'<'}</button>
+                <a className={`m-Button m-rightButton ${R_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableRight.bind(this)}>
+                    <img src={rightArrow} alt=""/>
+                </a>
+                <a className={`m-Button m-leftButton ${L_ButtonHide ? ` ` : `buttonHide`}`} onClick={this.tableLeft.bind(this)}>
+                    <img src={leftArrow} alt=""/>
+                </a>
                 <table className="row-box m-table">
                     <tbody>
                         <tr>
@@ -136,7 +142,7 @@ export default class Table extends Component {
                                                 onClick={this.activeClass.bind(this)}
                                             >
                                                 <span>
-                                                    {detail.price === "--" ? '查看' : (detail.price === " " ? "--" : detail.price + ' 起')}
+                                                    {detail.price === "--" ? '查看' : (detail.price === " " ? "--" : <b>{detail.price + ' 起'}</b>)}
                                                 </span>
                                             </div>
                                         })}
