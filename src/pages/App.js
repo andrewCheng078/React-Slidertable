@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Table from '../components/table/Table';
+import TableHook from '../components/table/TableHook';
 
 export default class App extends Component {
   constructor(){
@@ -14,13 +15,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-          <Table  slide={ 3 } 
+          <TableHook slide={ 3 } 
                   show={ 3 } 
                   speed={ .3 } 
-                  whenClick={ ()=>console.log('call back') }
-                  ref={this.tableRef}
-          />
-
+                  whenClick={ ()=>console.log('call back') }/>
+  
       </div>
     )
   }
